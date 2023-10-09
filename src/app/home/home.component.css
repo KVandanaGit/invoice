@@ -1,0 +1,15 @@
+.navbar-nav{
+    padding-left: 21cm;
+    font-size: large;
+}
+
+.navbar{
+    width: 100%;
+    height: 3cm;
+}
+
+.navbar-brand{
+    font-size: 1.15cm;
+    -webkit-text-fill-color: darkred;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

@@ -1,0 +1,111 @@
+<div class="container mt-3">
+
+    <div *ngIf="errMsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errMsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div *ngIf="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{successMsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <br>
+    <div class="invoice">
+        <form [formGroup]="invoiceForm" (ngSubmit)="invoiceSubmit()">
+            <div class="container">
+                <div class="left">
+                    <b style="font-size: xx-large; -webkit-text-fill-color: darkred;">RAHUL ENTERPRISES</b><br>
+                    No.194, 2nd cross, Rajivgandhi Nagar,<br>
+                    Near Don Bosco College,<br>
+                    Bomanahalli, Bangalore - 560068.<br>
+                    <b>GSTIN: 29AG0PV7289E1ZF</b><br>
+                    <b>Mobile: 9448029075</b><br><br>
+                    <b class="bill">BILL To:</b>
+                    <textarea type="text" class="form-control" formControlName="billto"></textarea><br><br>
+                </div>
+                <div class="float-right">
+                    <b style="font-size: 0.45cm;">Invoice No. </b><input type="number" class="form-control"
+                        formControlName="invoiceno">
+                    <b style="font-size: 0.45cm;">Date: </b><input type="date" class="form-control"
+                        formControlName="date"><br>
+                    <b style="font-size: 0.45cm;">Bank Details:</b>
+                    <p>Kotak Mahindra Bank <br>
+                        RAHUL ENTERPRISES <br>
+                        A/C No. 5446255816 <br>
+                        IFSC Code: KKBK0000421
+                    </p>
+                </div>
+            </div>
+
+
+            <br>
+            <form [formGroup]="invoiceForm" (ngSubmit)="invoiceSubmit()">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 1cm;"><b>SI No.</b></th>
+                            <th style="width: 3cm;"><b>HSN Code</b></th>
+                            <th style="width: 3cm;"><b>Item & Description</b></th>
+                            <th style="width: 2cm;"><b>Quantity</b></th>
+                            <th style="width: 2cm;"><b>Price</b></th>
+                            <th style="width: 1cm;"><b>Per</b></th>
+                            <th style="width: 1cm;"><b>CGST (%)</b></th>
+                            <th style="width: 1cm;"><b>SGST (%)</b></th>
+                            <th style="width: 1cm;"><b>IGST (%)</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" class="form-control" formControlName="sino"></td>
+                            <td><input type="number" class="form-control" formControlName="hsn"></td>
+                            <td><input type="text" class="form-control" formControlName="item"></td>
+                            <td><input type="number" class="form-control" formControlName="quantity"></td>
+                            <td><input type="number" class="form-control" formControlName="price"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="number" class="form-control" formControlName="cgst"></td>
+                            <td><input type="number" class="form-control" formControlName="sgst"></td>
+                            <td><input type="number" class="form-control" formControlName="igst"></td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7"></td>
+                            <td colspan="1"><b>Sub Total</b></td>
+                            <td>{{calculateSub()}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="7"></td>
+                            <td colspan="1"><b>CGST</b></td>
+                            <td>{{calculateCGST()}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="7"></td>
+                            <td colspan="1"><b>SGST</b></td>
+                            <td>{{calculateSGST()}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="7"></td>
+                            <td colspan="1"><b>IGST</b></td>
+                            <td>{{calculateIGST()}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="7"></td>
+                            <td colspan="1"><b>Total</b></td>
+                            <td>{{calculateTotal()}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <p><b style="float: right;">For RAHUL ENTERPRISES</b></p>
+                <textarea style="width: 13cm; height: 1cm;" class="amount" placeholder="Amount (in words)"></textarea>
+                <p class="paragraph-text" style="font-size: smaller;">*Subject to jurisdiction of Bangalore
+                    only.</p>
+                <br>
+            </form>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" (click)="invoiceSubmit()">Save</button>&nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="print()">Print</button>
+    </div>
+</div>

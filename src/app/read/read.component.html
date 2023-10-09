@@ -1,0 +1,36 @@
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr class="column">
+                <th scope="col">SI No.</th>
+                <th scope="col">Bill</th>
+                <th scope="col">Date</th>
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Cgst</th>
+                <th scope="col">Sgst</th>
+                <th scope="col">Igst</th>
+                <th scope="col">Invoice No</th>
+                <th scope="col">HSN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let invoice of readInvoice">
+                <th scope="row">{{invoice.sino}}</th>
+                <td>{{invoice.billto}}</td>
+                <td>{{invoice.date}}</td>
+                <td>{{invoice.item}}</td>
+                <td>{{invoice.quantity}}</td>
+                <td>{{invoice.price}}</td>
+                <td>{{invoice.cgst}}</td>
+                <td>{{invoice.sgst}}</td>
+                <td>{{invoice.igst}}</td>
+                <td>{{invoice.invoiceno}}</td>
+                <td>{{invoice.hsn}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
